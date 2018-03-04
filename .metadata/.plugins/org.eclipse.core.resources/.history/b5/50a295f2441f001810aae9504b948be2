@@ -1,0 +1,11 @@
+package oop;
+
+public class MainClass {
+
+	public static void main(String[] args) 
+	{
+		CallByConcepts c1 = new CallByConcepts(1, 2);
+		CallByConcepts c2 = new CallByConcepts(5,6);
+	}
+
+}

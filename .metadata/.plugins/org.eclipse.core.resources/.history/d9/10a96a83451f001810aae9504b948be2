@@ -1,0 +1,12 @@
+package oop;
+
+public class CallByConcepts
+{
+	public int a, b;
+	
+	public CallByConcepts(int _a, int _b)
+	{
+		a = _a;
+		b = _b;
+	}
+}
