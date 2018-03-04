@@ -1,0 +1,13 @@
+import algorithms.TaskScheduler;
+
+public class mainClass {
+
+	public static void main(String[] args) 
+	{
+		// Task Scheduler
+		char[] arr = {'A','A','A','B','B','B'};
+		TaskScheduler t = new TaskScheduler();
+		t.leastInterval(arr, 2);
+	}
+
+}

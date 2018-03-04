@@ -1,0 +1,15 @@
+package algorithms;
+
+public class LinkedListPalindrome 
+{
+	class ListNode
+	{
+		int val = 0;
+		ListNode next = null;
+		
+		public ListNode(int v)
+		{
+			val = v;
+		}
+	}
+}
