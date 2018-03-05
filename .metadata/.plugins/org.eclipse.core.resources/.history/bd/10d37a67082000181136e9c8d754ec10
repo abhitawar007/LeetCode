@@ -1,0 +1,44 @@
+package algorithms;
+
+public class ReverseLinkedList
+{
+	public ListNode reverseMtoN(ListNode head, int m, int n)
+	{
+		if (head == null || head.next == null)
+			return head;
+		try
+		{
+
+			ListNode prev = null, curr = head;
+
+			for (int i = 0; i < m; i++)
+			{
+				if (curr == null)
+					return head;
+				prev = curr;
+				curr = curr.next;
+			}
+
+			ListNode dummy = prev, dummy1 = curr;
+			prev = curr;
+			curr = curr.next;
+
+			for (int i = m; i < n; i++)
+			{
+				ListNode nn = curr.next;
+				curr.next = prev;
+				prev = curr;
+				curr = nn;
+			}
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		dummy.next = prev;
+		dummy1.next = curr;
+
+		return head;
+	}
+}
