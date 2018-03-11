@@ -1,0 +1,48 @@
+package algorithms;
+
+import java.util.Stack;
+
+public class LinkedListPalindrome
+{
+	public boolean isPalindrome(ListNode head)
+	{
+		// Check if the Linked list is a palindrome
+
+		if (head == null || head.next == null)
+			return true;
+
+		ListNode slow = head, fast = head;
+		Stack<Integer> s = new Stack<>();
+
+		while (fast != null && fast.next != null)
+		{
+			s.push(slow.val);
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		if (fast != null) // odd length
+			slow = slow.next;
+
+		while (slow != null)
+		{
+			if (slow.val != s.pop())
+				return false;
+			slow = slow.next;
+		}
+
+		return s.size() == 0;
+	}
+
+	void print(ListNode head)
+	{
+		System.out.println();
+		while (head != null)
+		{
+			System.out.print(head.val);
+			head = head.next;
+		}
+		System.out.println();
+	}
+
+}

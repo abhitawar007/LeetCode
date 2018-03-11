@@ -1,0 +1,21 @@
+package algorithms;
+
+public class LinkedListIntersection
+{
+	public ListNode intersection(ListNode l1, ListNode l2)
+	{
+		if(l1 == null || l2 == null)
+			return null;
+		
+		int len1, len2;
+		
+		ListNode curr1 = l1, curr2 = l2;
+		
+		while(curr1 != null)
+		{
+			len1++;
+			
+		}
+		
+	}
+}

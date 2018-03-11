@@ -6,7 +6,11 @@
 <fullyQualifiedTypeName name="java.util.Stack"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListPalindrome"/>
 <fullyQualifiedTypeName name="javax.management.ListenerNotFoundException"/>
-<fullyQualifiedTypeName name="algorithms.ListNode"/>
 <fullyQualifiedTypeName name="oop.CallByConcepts"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="algorithms.ListNode"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="algorithms.ReverseLinkedList"/>
+<fullyQualifiedTypeName name="algorithms.LinkedListIntersection"/>
+<fullyQualifiedTypeName name="algorithms.LinkedListAlgos"/>
 </qualifiedTypeNameHistroy>

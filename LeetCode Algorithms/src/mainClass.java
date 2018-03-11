@@ -1,6 +1,5 @@
-import algorithms.LinkedListPalindrome;
+import algorithms.LinkedListAlgos;
 import algorithms.ListNode;
-import algorithms.ReverseLinkedList;
 
 public class mainClass
 {
@@ -19,10 +18,11 @@ public class mainClass
 		// System.out.println(f.firstBadVersion(10));
 
 		// Linked list palindrome
-		LinkedListPalindrome list = new LinkedListPalindrome();
 		// Generate Linked list
 		ListNode h1 = new ListNode(1);
 		ListNode c1 = h1;
+		ListNode c3 = null;
+
 		c1.next = new ListNode(2);
 		c1 = c1.next;
 		c1.next = new ListNode(3);
@@ -33,11 +33,14 @@ public class mainClass
 		c1 = c1.next;
 		c1.next = new ListNode(6);
 		c1 = c1.next;
+		c3 = c1;
+		c1.next = c3;
 
-		ListNode h2 = new ListNode(3);
+		ListNode h2 = new ListNode(7);
 		ListNode c2 = h2;
-		c2.next = new ListNode(5);
+		c2.next = new ListNode(8);
 		c2 = c2.next;
+		c2.next = c3;
 		// c2.next = new ListNode(2);
 		// c2 = c2.next;
 		// c2.next = new ListNode(1);
@@ -49,8 +52,14 @@ public class mainClass
 		// System.out.println(list.isPalindrome(h1));
 		// System.out.println(list.isPalindrome(h2));
 
-		ReverseLinkedList rvlist = new ReverseLinkedList();
-		rvlist.reverseMtoN(h1, 1, 4);
+		LinkedListAlgos lla = new LinkedListAlgos();
+		// c2.next = c3;
+		// System.out.println("Intersection point : " + lla.intersection(h1, h2).val);
+		ListNode ans = lla.hasCycle(h1);
+		if (ans == null)
+			System.out.println("null");
+		else
+			System.out.println("Cycle starts at : " + ans.val);
 
 		// HashMap<Character, Integer> map = new HashMap<>();
 		// map.put('a', map.getOrDefault('a', 1) + 1);
