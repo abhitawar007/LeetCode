@@ -17,7 +17,7 @@ public class MinStack
 
 	public void push(int x)
 	{
-		if (minValues.isEmpty() || x <= minValues.peek().intValue())
+		if (minValues.isEmpty() || x <= minValues.peek())
 			minValues.push(x);
 		mainStack.push(x);
 	}
