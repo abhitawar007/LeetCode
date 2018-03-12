@@ -13,4 +13,7 @@
 <fullyQualifiedTypeName name="algorithms.ReverseLinkedList"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListIntersection"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListAlgos"/>
+<fullyQualifiedTypeName name="algorithms.TreeNode"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Queue"/>
 </qualifiedTypeNameHistroy>

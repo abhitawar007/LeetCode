@@ -1,0 +1,15 @@
+package testing;
+
+import algorithms.GraphAlgos;
+
+public class GraphTesting
+{
+	public static void main(String[] args)
+	{
+		GraphAlgos graph = new GraphAlgos();
+
+		// course schedule
+		int[][] prereqs = { { 0, 1 }, { 1, 0 } };
+		System.out.println(graph.courseSchedule(3, prereqs));
+	}
+}

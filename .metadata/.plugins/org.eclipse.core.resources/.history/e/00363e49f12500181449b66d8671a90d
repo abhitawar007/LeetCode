@@ -1,0 +1,15 @@
+package algorithms;
+
+public class GraphAlgos
+{
+	
+	public boolean courseSchedule(int numOfCourses, int[][] prerequisits)
+	{
+	//	Leetcode: 207. Course Schedule
+		
+	}
+	
+	
+	
+
+}

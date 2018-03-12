@@ -115,4 +115,23 @@ public class TreeAlgos
 		return isBalanced(root.left) && isBalanced(root.right);
 
 	}
+
+	public boolean isValidBST(TreeNode root)
+	{
+		if (root == null)
+			return true;
+
+		return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+
+	public boolean isBST(TreeNode root, int min, int max)
+	{
+		if (root == null)
+			return true;
+		int i = root.value;
+		if (i < min || i > max)
+			return false;
+
+		return (isBST(root.left, min, i - 1) && isBST(root.right, i + 1, max));
+	}
 }
