@@ -1,0 +1,38 @@
+package algorithms;
+
+public class TreeAlgos
+{
+	public TreeNode createBSTfromArray(int[] arr)
+	{
+		if (arr.length == 0)
+			return null;
+		if (arr.length == 1)
+			return new TreeNode(arr[0]);
+
+		return createBST(arr, 0, arr.length);
+	}
+
+	private TreeNode createBST(int[] arr, int lo, int hi)
+	{
+		if(lo>hi)
+			return null;
+		
+		int mid = (int) Math.ceil((lo + hi)/2);
+		TreeNode node = new TreeNode(arr[mid]);
+		
+		if(lo == hi)
+			return node;
+		
+		node.left = createBST(arr, lo, mid-1);
+		node.right = createBST(arr, mid+1, hi);
+		
+		return node;
+	}
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}

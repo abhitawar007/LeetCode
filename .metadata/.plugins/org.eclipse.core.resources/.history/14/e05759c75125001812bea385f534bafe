@@ -1,0 +1,17 @@
+package testing;
+
+import algorithms.TreeAlgos;
+import algorithms.TreeNode;
+
+public class TreeTesting
+{
+
+	public static void main(String[] args)
+	{
+		TreeAlgos algo = TreeAlgos();
+		int[] arr = { 1, 2, 3, 4, 5 };
+		TreeNode root = createBSTfromArray(arr);
+		printTree(root);
+	}
+
+}

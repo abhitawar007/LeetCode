@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;algo&apos; in &apos;testing.TreeTesting.main(...)&apos; to &apos;tree&apos;&#x0D;&#x0A;- Original project: &apos;LeetCode Algorithms&apos;&#x0D;&#x0A;- Original element: &apos;testing.TreeTesting.main(String[]).algo&apos;&#x0D;&#x0A;- Renamed element: &apos;algo&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;algo&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;testing{TreeTesting.java[TreeTesting~main~\[QString;@algo!159!187!169!172!QTreeAlgos;!0!false" name="tree" references="true" stamp="1520789394376" version="1.0"/>
+</session>

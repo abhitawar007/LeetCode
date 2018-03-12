@@ -1,0 +1,26 @@
+package algorithms;
+
+public class TreeAlgos
+{
+	public TreeNode createBSTfromArray(int[] arr)
+	{
+		if (arr.length == 0)
+			return null;
+		if (arr.length == 1)
+			return new TreeNode(arr[0]);
+
+		return createBST(arr, 0, arr.length);
+	}
+
+	private TreeNode createBST(int[] arr, int lo, int hi)
+	{
+
+	}
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}
