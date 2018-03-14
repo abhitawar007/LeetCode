@@ -18,6 +18,7 @@ public class TreeTesting
 		TreeNode root = new TreeNode(3);
 		TreeNode dummy = root;
 		root.left = new TreeNode(9);
+		TreeNode p = root.left;
 		root.right = new TreeNode(20);
 		root = root.right;
 		root.left = new TreeNode(15);
@@ -25,7 +26,10 @@ public class TreeTesting
 		root = root.left;
 		root.left = new TreeNode(10);
 
-		System.out.println(tree.isBalanced(dummy));
+		TreeNode q = root.left;
+		System.out.println(tree.commonAncestor(dummy, p, q).val);
+
+		// System.out.println(tree.isBalanced(dummy));
 
 		// List<List<Integer>> list = tree.levelOrder(dummy);
 		// for (List<Integer> lst : list)

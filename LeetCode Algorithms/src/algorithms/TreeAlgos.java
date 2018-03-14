@@ -23,7 +23,7 @@ public class TreeAlgos
 		String blank = "";
 		for (int i = 0; i < spaces; i++)
 			blank += " ";
-		System.out.println(blank + root.value);
+		System.out.println(blank + root.val);
 
 		print(root.left, spaces + 4);
 	}
@@ -83,7 +83,7 @@ public class TreeAlgos
 			}
 			else
 			{
-				list.get(list.size() - 1).add(node.value);
+				list.get(list.size() - 1).add(node.val);
 				if (node.left != null)
 					q.add(node.left);
 				if (node.right != null)
@@ -128,10 +128,102 @@ public class TreeAlgos
 	{
 		if (root == null)
 			return true;
-		int i = root.value;
+		int i = root.val;
 		if (i < min || i > max)
 			return false;
 
 		return (isBST(root.left, min, i - 1) && isBST(root.right, i + 1, max));
 	}
+
+	public TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q)
+	{
+		// Given a binary tree, find the lowest common ancestor (LCA) of two given nodes
+		// in the tree.
+
+		// Check if tree contains both p and q
+		if (!treeContains(root, p) || !treeContains(root, q))
+			return null;
+		return findAncestor(root, p, q);
+
+	}
+
+	public TreeNode findAncestor(TreeNode root, TreeNode p, TreeNode q)
+	{
+		if (root == null)
+			return null;
+
+		if (root == p || root == q)
+			return root;
+
+		TreeNode leftRoot = findAncestor(root.left, p, q);
+		TreeNode rightRoot = findAncestor(root.right, p, q);
+
+		if (leftRoot != null && rightRoot != null)
+			return root;
+
+		return leftRoot != null ? leftRoot : rightRoot;
+	}
+
+	public boolean treeContains(TreeNode root, TreeNode x)
+	{
+		if (root == null)
+			return false;
+		if (root == x)
+			return true;
+		return (treeContains(root.left, x) || treeContains(root.right, x));
+	}
+
+	public boolean isSubtree(TreeNode t1, TreeNode t2)
+	{
+		// 572. Subtree of Another Tree
+		if (t2 == null)
+			return true;
+
+		if (traverse(t1, t2))
+			return true;
+		return false;
+	}
+
+	public boolean traverse(TreeNode t1, TreeNode t2)
+	{
+		if (t1 == null)
+			return false;
+		if (t1.val == t2.val)
+			if (isBinarySubTree(t1, t2))
+				return true;
+		return traverse(t1.left, t2) || traverse(t1.right, t2);
+	}
+
+	public boolean isBinarySubTree(TreeNode t1, TreeNode t2)
+	{
+		if (t1 == null && t2 == null)
+			return true;
+
+		if (t1 == null && t2 != null)
+			return false;
+
+		if (t1 != null && t2 == null)
+			return false;
+
+		if (t1.val != t2.val)
+			return false;
+
+		return isBinarySubTree(t1.left, t2.left) && isBinarySubTree(t1.right, t2.right);
+	}
+
+	public boolean hasPathSum(TreeNode root, int sum)
+	{
+		// 112. Path Sum: Given a binary tree and a sum, determine if the tree has a
+		// root-to-leaf path such that adding up all the values along the path equals
+		// the given sum.
+		if (root == null)
+			return false;
+
+		int subsum = sum - root.val;
+		if (subsum == 0)
+			if (root.left == null && root.right == null)
+				return true;
+		return hasPathSum(root.left, subsum) || hasPathSum(root.right, subsum);
+	}
+
 }

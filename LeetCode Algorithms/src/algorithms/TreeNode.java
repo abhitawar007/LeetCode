@@ -2,13 +2,13 @@ package algorithms;
 
 public class TreeNode
 {
-	public int value;
+	public int val;
 	public TreeNode left;
 	public TreeNode right;
 
-	public TreeNode(int val)
+	public TreeNode(int _val)
 	{
-		value = val;
+		val = _val;
 		left = null;
 		right = null;
 	}
