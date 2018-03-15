@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="algorithms.TaskScheduler"/>
 <fullyQualifiedTypeName name="algorithms.FirstBadVersion"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Stack"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListPalindrome"/>
 <fullyQualifiedTypeName name="javax.management.ListenerNotFoundException"/>
@@ -16,4 +15,8 @@
 <fullyQualifiedTypeName name="algorithms.TreeNode"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="algorithms.GraphNode"/>
+<fullyQualifiedTypeName name="algorithms.GraphAlgos"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
 </qualifiedTypeNameHistroy>

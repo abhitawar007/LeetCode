@@ -7,6 +7,9 @@ import java.util.Queue;
 
 public class TreeAlgos
 {
+
+	private int ctr = 0;
+
 	public void printTree(TreeNode root)
 	{
 		if (root == null)
@@ -224,6 +227,48 @@ public class TreeAlgos
 			if (root.left == null && root.right == null)
 				return true;
 		return hasPathSum(root.left, subsum) || hasPathSum(root.right, subsum);
+	}
+
+	public int pathSum(TreeNode root, int sum)
+	{
+		// 437. Path Sum III || also: CTCI
+		printTree(root);
+
+		if (root == null)
+			return ctr;
+		List<Integer> list = new ArrayList<>();
+		list.add(sum);
+		// list.add(sum-root.val);
+		helperforPathSum(root, list, sum);
+		return ctr;
+	}
+
+	public void helperforPathSum(TreeNode root, List<Integer> list, int sum)
+	{
+		if (root == null)
+			return;
+		for (int i : list)
+			if (i == root.val)
+				ctr++;
+		List<Integer> temp = new ArrayList<>();
+		temp.add(sum);
+		for (int i : list)
+		{
+			int tempVal = i - root.val;
+			// if (!list.contains(tempVal) && !temp.contains(tempVal))
+			temp.add(i - root.val);
+		}
+
+		// if (list.size() > 1 && root.left == null && root.right == null && list.get(0)
+		// == root.val)
+		// ctr++;
+
+		// List<Integer> sendList = new ArrayList<>();
+
+		// sendList.addAll(list);
+		// sendList.addAll(temp);
+		helperforPathSum(root.left, temp, sum);
+		helperforPathSum(root.right, temp, sum);
 	}
 
 }
