@@ -1,0 +1,32 @@
+package algorithms;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class ArraysAndStrings
+{
+	public List<List<String>> GroupAnagrams(String[] strs)
+	{
+		List<List<String>> list = new ArrayList<List<String>>();
+		if (strs.length == 0)
+			return list;
+
+		HashMap<String, ArrayList<String>> map = new HashMap<>();
+
+		for (String str : strs)
+		{
+			String sortedStr = sortString(str);
+			if (map.containsKey(sortedStr))
+				map.get(sortedStr).add(str);
+			map.put(sortedStr, map.getOrDefault(sortedStr, new ArrayList<String>()).add(str));
+
+			List<String> lst = map.getOrDefault(sortedStr, new ArrayList<string>());
+		}
+	}
+
+	public String sortString(String str)
+	{
+
+	}
+}

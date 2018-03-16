@@ -271,4 +271,38 @@ public class TreeAlgos
 		helperforPathSum(root.right, temp, sum);
 	}
 
+	public List<List<Integer>> pathSum2(TreeNode root, int sum)
+	{
+		// 113. Path Sum 2: Return all the paths from root to leaf which add up to sum
+		List<List<Integer>> list = new ArrayList<List<Integer>>();
+		if (root == null)
+			return list;
+
+		List<Integer> passList = new ArrayList<>();
+
+		findPath(root, passList, sum, list);
+		return list;
+	}
+
+	public void findPath(TreeNode root, List<Integer> passList, int sum, List<List<Integer>> list)
+	{
+		if (root == null)
+			return;
+		int rootval = root.val;
+		passList.add(rootval);
+
+		if (root.left == null && root.right == null)
+		{
+			if (rootval == sum)
+				list.add(new ArrayList<>(passList));
+		}
+		else
+		{
+			findPath(root.left, passList, sum - rootval, list);
+			findPath(root.right, passList, sum - rootval, list);
+		}
+
+		passList.remove(passList.size() - 1);
+	}
+
 }
