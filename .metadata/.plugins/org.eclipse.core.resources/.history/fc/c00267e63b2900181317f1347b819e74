@@ -60,7 +60,6 @@ public class ArraysAndStrings
 				max = Math.max(max, j - i);
 				set.clear();
 				i++;
-				set.add(s.charAt(i));
 				j = i + 1;
 			}
 		}

@@ -12,11 +12,13 @@
 <fullyQualifiedTypeName name="algorithms.ReverseLinkedList"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListIntersection"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListAlgos"/>
-<fullyQualifiedTypeName name="algorithms.TreeNode"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Queue"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="algorithms.GraphNode"/>
 <fullyQualifiedTypeName name="algorithms.GraphAlgos"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="algorithms.TreeNode"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="algorithms.ArraysAndStrings"/>
 </qualifiedTypeNameHistroy>

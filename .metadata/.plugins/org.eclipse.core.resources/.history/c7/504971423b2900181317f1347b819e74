@@ -37,35 +37,32 @@ public class ArraysAndStrings
 		Arrays.sort(chars);
 		return new String(chars);
 	}
-
-	public int lengthOfLongestSubstring(String s)
-	{
-		int len = s.length();
-		if (len == 0 || len == 1)
-			return len;
-
-		HashSet<Character> set = new HashSet<>();
-		int i = 0, j = 1, max = 1;
-		set.add(s.charAt(0));
-
-		while (j < len)
-		{
-			if (!set.contains(s.charAt(j)))
-			{
-				set.add(s.charAt(j));
-				j++;
-			}
-			else
-			{
-				max = Math.max(max, j - i);
-				set.clear();
-				i++;
-				set.add(s.charAt(i));
-				j = i + 1;
-			}
-		}
-
-		return Math.max(max, j - i);
-	}
+	
+	public int lengthOfLongestSubstring(String s) 
+    {
+        int len = s.length();
+        if(len == 0 || len == 1)
+            return len;
+        
+        HashSet<Character> set = new HashSet<>();
+        int i=0, j=1 , max=1;
+        
+        while(j < len)
+        {
+            if(!set.contains(s.charAt(j)))
+            {
+                j++;
+            }
+            else
+            {
+                max = Math.max(max, j-i);
+                set.clear();
+                i++;
+                j = i+1;
+            }
+        }
+        
+        return Math.max(max, j-i);
+    }
 
 }
