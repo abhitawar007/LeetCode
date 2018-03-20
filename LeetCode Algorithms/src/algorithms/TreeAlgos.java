@@ -305,4 +305,50 @@ public class TreeAlgos
 		passList.remove(passList.size() - 1);
 	}
 
+	int p = 0;
+
+	public TreeNode buildTree(int[] preorder, int[] inorder)
+	{
+		// 105: Construct Binary Tree from Preorder and Inorder Traversal
+		if (preorder.length == 0)
+			return null;
+
+		return buildTree(preorder, inorder, 0, inorder.length - 1);
+	}
+
+	public TreeNode buildTree(int[] preorder, int[] inorder, int inS, int inE)
+	{
+		if (inE < inS)
+			return null;
+
+		int index = findIndex(preorder[p], inorder, inS, inE);
+		TreeNode node = new TreeNode(preorder[p++]);
+
+		node.left = buildTree(preorder, inorder, inS, index - 1);
+		node.right = buildTree(preorder, inorder, index + 1, inE);
+
+		return node;
+	}
+
+	public int findIndex(int x, int[] inorder, int inS, int inE)
+	{
+		int lo = inS, hi = inE;
+		for (int i = inS; i <= inE; i++)
+			if (x == inorder[i])
+				return i;
+		return -1;
+		// while (lo <= hi)
+		// {
+		// int mid = (lo + hi) / 2;
+		// int midval = inorder[mid];
+		// if (midval == x)
+		// return mid;
+		// else if (midval > x)
+		// hi = mid;
+		// else
+		// lo = mid + 1;
+		// }
+		// return -1;
+	}
+
 }

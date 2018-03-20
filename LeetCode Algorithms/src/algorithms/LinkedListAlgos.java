@@ -1,5 +1,6 @@
 package algorithms;
 
+import java.util.HashSet;
 import java.util.Stack;
 
 public class LinkedListAlgos
@@ -194,8 +195,99 @@ public class LinkedListAlgos
 		return slow;
 	}
 
+	public ListNode reverseKGroup(ListNode head, int k)
+	{
+		// 25. Reverse Nodes in k-Group
+		if (head == null || head.next == null || k == 0)
+			return head;
+
+		ListNode dummyHead = new ListNode(-1);
+		dummyHead.next = head;
+		ListNode dummy = dummyHead;
+		ListNode itr = head;
+
+		while (itr != null)
+		{
+			for (int i = 0; i < k; i++)
+			{
+				if (itr == null)
+					return dummyHead.next;
+				itr = itr.next;
+			}
+
+			// Out of for loop implies that next block is present in the list
+			ListNode nextDummy = dummy.next;
+			dummy.next = reverseForKGroup(dummy, nextDummy, itr);
+			if (dummyHead.val == -1)
+			{
+				dummyHead.next = dummy.next;
+				dummyHead.val = 0;
+			}
+			dummy = nextDummy;
+		}
+		return dummyHead.next;
+	}
+
+	public ListNode reverseForKGroup(ListNode prev, ListNode curr, ListNode terminator)
+	{
+		boolean flag = true;
+		while (curr != terminator)
+		{
+			ListNode n = curr.next;
+			if (flag)
+			{
+				curr.next = terminator;
+				flag = false;
+			}
+			else
+				curr.next = prev;
+			prev = curr;
+			curr = n;
+		}
+		return prev;
+	}
+
+	public ListNode mergeKLists(ListNode[] lists)
+	{
+		// 23. Merge k Sorted Lists
+		if (lists.length == 0 || lists.length == 1)
+			return lists[0];
+		ListNode dummy = new ListNode(0);
+		ListNode curr = dummy;
+
+		HashSet<ListNode> set = new HashSet<>();
+
+		while (true)
+		{
+			ListNode nextNode = new ListNode(Integer.MAX_VALUE);
+			boolean flag = true;
+
+			for (ListNode node : lists)
+			{
+				while (node != null && set.contains(node))
+					node = node.next;
+				if (node == null)
+					continue;
+
+				if (node.val < nextNode.val)
+				{
+					flag = false;
+					nextNode = node;
+				}
+			}
+
+			if (flag)
+				return dummy.next;
+			curr.next = new ListNode(nextNode.val);
+			curr = curr.next;
+			set.add(nextNode);
+		}
+	}
+
 	public void printList(ListNode head)
 	{
+		if (head == null)
+			System.out.println("List is empty");
 		System.out.println();
 		while (head != null)
 		{
