@@ -186,32 +186,21 @@ public class ArraysAndStrings
 			return -1;
 
 		int pivot = findMinRot(nums);
+		int lo = 0, hi = nums.length - 1;
 
-		if (nums[pivot] == target)
-			return pivot;
-		if (pivot == 0)
-			return binarySearch(nums, 0, n - 1, target);
-		if (nums[0] <= target)
-			return binarySearch(nums, 0, pivot - 1, target);
-		return binarySearch(nums, pivot + 1, n - 1, target);
-
-	}
-
-	public int binarySearch(int[] nums, int lo, int hi, int target)
-	{
-		if (nums.length == 0)
-			return -1;
-		while (lo <= hi)
+		while (lo- pivot <= hi)
 		{
 			int mid = lo + (hi - lo) / 2;
+			int realmid = (mid + pivot) % n;
 
-			if (nums[mid] == target)
-				return mid;
-			else if (nums[mid] < target)
-				lo = mid + 1;
+			if (nums[realmid] < target)
+				lo = realmid + 1;
+			else if (nums[realmid] > target)
+				hi = realmid - 1;
 			else
-				hi = mid - 1;
+				return realmid;
 		}
 		return -1;
+
 	}
 }

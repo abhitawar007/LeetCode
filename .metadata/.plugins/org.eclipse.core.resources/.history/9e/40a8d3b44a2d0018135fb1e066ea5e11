@@ -186,14 +186,7 @@ public class ArraysAndStrings
 			return -1;
 
 		int pivot = findMinRot(nums);
-
-		if (nums[pivot] == target)
-			return pivot;
-		if (pivot == 0)
-			return binarySearch(nums, 0, n - 1, target);
-		if (nums[0] <= target)
-			return binarySearch(nums, 0, pivot - 1, target);
-		return binarySearch(nums, pivot + 1, n - 1, target);
+		int lo = 0, hi = nums.length - 1;
 
 	}
 
