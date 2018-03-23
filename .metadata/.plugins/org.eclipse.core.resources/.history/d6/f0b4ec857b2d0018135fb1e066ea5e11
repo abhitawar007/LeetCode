@@ -1,0 +1,40 @@
+import java.util.HashMap;
+
+public class mainClass
+{
+
+	public static void main(String[] args)
+	{
+		String[] origItems = { "A", "B", "C", "D" };
+		float[] origPrice = { 1, 2, 3, 4 };
+		String[] items = { "A", "C", "D" };
+		float[] prices = { 2, 3, 5 };
+
+		// if (items.length == 0 || origItems.length == 0)
+		// return 0;
+
+		HashMap<String, Float> map1 = new HashMap<>();
+		HashMap<String, Float> map2 = new HashMap<>();
+
+		for (int i = 0; i < origItems.length; i++)
+			map1.put(origItems[i], origPrice[i]);
+
+		for (int i = 0; i < items.length; i++)
+			map2.put(items[i], prices[i]);
+
+		int count = 0;
+
+		for (String key : map2.keySet())
+		{
+			if (map2.get(key).floatValue() != map1.get(key).floatValue())
+			{
+				System.out.println(map2.get(key) + " --- " + map1.get(key));
+				count++;
+			}
+		}
+
+		// return count;
+
+	}
+
+}
