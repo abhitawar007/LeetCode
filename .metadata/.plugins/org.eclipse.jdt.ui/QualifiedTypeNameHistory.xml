@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="algorithms.ReverseLinkedList"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListIntersection"/>
 <fullyQualifiedTypeName name="algorithms.LinkedListAlgos"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Queue"/>
 <fullyQualifiedTypeName name="algorithms.GraphNode"/>
 <fullyQualifiedTypeName name="algorithms.GraphAlgos"/>
@@ -23,4 +22,6 @@
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="algorithms.DynamicProgramming"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="algorithms.IntegerAlgos"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
