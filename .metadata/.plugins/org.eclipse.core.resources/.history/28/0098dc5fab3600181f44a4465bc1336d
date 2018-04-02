@@ -1,0 +1,9 @@
+package algorithms;
+
+public class BackTracking
+{
+	public List<List<Integer>> solveNQueens(int n)
+	{
+		
+	}
+}
