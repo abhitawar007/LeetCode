@@ -1,0 +1,22 @@
+import java.util.HashMap;
+import java.util.Hashtable;
+
+public class mainClass
+{
+
+	public static void main(String[] args)
+	{
+		HashMap<Integer, Character> map = new HashMap<>();
+		Hashtable<Integer, Character> table = new Hashtable<>();
+
+		map.put(new Integer(1), 'A');
+		map.put(new Integer(1), 'B');
+
+		table.put(new Integer(1), 'C');
+		table.put(new Integer(1), 'D');
+
+		System.out.println("map : " + map);
+		System.out.println("table : " + table);
+	}
+
+}

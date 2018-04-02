@@ -1,0 +1,28 @@
+package testing;
+
+import algorithms.ArrayAlgos;
+
+public class ArrayTesting
+{
+
+	public static void main(String[] args)
+	{
+		ArrayAlgos ar = new ArrayAlgos();
+		// int[] arr = { 3 };
+		// int max = ar.removeElement(arr, 3);
+		// for (int i = 0; i < max; i++)
+		// {
+		// System.out.print(arr[i] + " ");
+		// }
+		// _______________________________________________________
+
+		// Search in rotated sorted array
+
+		int[] arr = { 1, 3 };
+		System.out.println("index : " + ar.searchRot(arr, 3));
+
+		// _______________________________________________________
+
+	}
+
+}
