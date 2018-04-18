@@ -1880,6 +1880,7 @@ IEclipsePreferences#org-eclipse-jdt-ui {
 		'semanticHighlighting.typeParameter.italic=false'
 		'semanticHighlighting.typeParameter.strikethrough=false'
 		'semanticHighlighting.typeParameter.underline=false'
+		'semanticHighlighting.varKeyword.color=204,120,50'
 		'sourceHoverBackgroundColor=255,255,255'
 }
 IEclipsePreferences#org-eclipse-jst-jsp-ui {

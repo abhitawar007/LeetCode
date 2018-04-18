@@ -122,4 +122,54 @@ public class StringAlgos
 		return list;
 	}
 
+	public String licenseKeyFormatting(String S, int K)
+	{
+		String ans = "";
+		int j = 0;
+		for (int i = S.length() - 1; i >= 0; i--)
+		{
+			if (S.charAt(i) == '-')
+				continue;
+			if (j != 0 && j % K == 0)// && i != 0 && ans.charAt(0) != '-')
+				ans = "-" + ans;
+			ans = Character.toUpperCase(S.charAt(i)) + ans;
+			j++;
+		}
+		return ans;
+	}
+
+	private String s = "";
+	private int lo = 0, hi = 0, max = 0;
+
+	public String longestPalindrome(String str)
+	{
+		s = str;
+
+		for (int i = 0; i < s.length(); i++)
+		{
+			findPalindrome(i, i);
+			findPalindrome(i, i + 1);
+		}
+
+		System.out.println("lo : " + lo + "hi : " + hi);
+
+		return s.substring(lo, hi);
+	}
+
+	public void findPalindrome(int m, int n)
+	{
+		while (m >= 0 && n < s.length() && s.charAt(m) == s.charAt(n))
+		{
+			m--;
+			n++;
+		}
+
+		if (n - m > max)
+		{
+			lo = m + 1;
+			hi = n;
+			max = hi - lo;
+		}
+	}
+
 }

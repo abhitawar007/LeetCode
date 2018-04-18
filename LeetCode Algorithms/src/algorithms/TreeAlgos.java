@@ -351,4 +351,85 @@ public class TreeAlgos
 		// return -1;
 	}
 
+	int max = 0;
+
+	public int longestUnivaluePath(TreeNode root)
+	{
+		if (root == null)
+			return 0;
+		pathHelper(root, 0, 0);
+		return max;
+	}
+
+	private int pathHelper(TreeNode root, int parentVal, int ctr)
+	{
+		if (root == null)
+			return 0;
+		int temp = 0;
+		if (root.val == parentVal)
+			temp = ctr + 1;
+		int leftVal = pathHelper(root.left, root.val, temp);
+		int rightVal = pathHelper(root.right, root.val, temp);
+
+		max = Math.max(max, leftVal + rightVal);
+
+		return root.val == parentVal ? temp : 0;
+	}
+
+	int itr;
+
+	// Encodes a tree to a single string.
+	public String serialize(TreeNode root)
+	{
+		StringBuilder sb = new StringBuilder();
+
+		preorder(root, sb);
+		// System.out.println(sb.toString());
+		return sb.toString();
+	}
+
+	private void preorder(TreeNode root, StringBuilder sb)
+	{
+		if (root == null)
+		{
+			sb.append("null,");
+			return;
+		}
+
+		sb.append(root.val);
+		sb.append(",");
+		preorder(root.left, sb);
+		preorder(root.right, sb);
+	}
+
+	// Decodes your encoded data to tree.
+	public TreeNode deserialize(String data)
+	{
+		if (data.length() == 0)
+			return null;
+
+		String[] arr = data.split(",");
+		itr = 0;
+		return build(arr);
+	}
+
+	private TreeNode build(String[] arr)
+	{
+		// System.out.println(arr[i]);
+		if (itr >= arr.length)
+			return null;
+
+		if (arr[itr].equals("null"))
+		{
+			itr++;
+			return null;
+		}
+
+		TreeNode node = new TreeNode(Integer.parseInt(arr[itr++]));
+		node.left = build(arr);
+		node.right = build(arr);
+
+		return node;
+	}
+
 }

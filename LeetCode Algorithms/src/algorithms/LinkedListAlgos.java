@@ -1,5 +1,6 @@
 package algorithms;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Stack;
 
@@ -41,7 +42,7 @@ public class LinkedListAlgos
 			while (len2-- != len1)
 				l2 = l2.next;
 
-		while (l1.val != l2.val)
+		while (l1.label != l2.label)
 		{
 			l1 = l1.next;
 			l2 = l2.next;
@@ -65,7 +66,7 @@ public class LinkedListAlgos
 
 		while (fast != null && fast.next != null)
 		{
-			s.push(slow.val);
+			s.push(slow.label);
 			slow = slow.next;
 			fast = fast.next.next;
 		}
@@ -75,7 +76,7 @@ public class LinkedListAlgos
 
 		while (slow != null)
 		{
-			if (slow.val != s.pop())
+			if (slow.label != s.pop())
 				return false;
 			slow = slow.next;
 		}
@@ -218,10 +219,10 @@ public class LinkedListAlgos
 			// Out of for loop implies that next block is present in the list
 			ListNode nextDummy = dummy.next;
 			dummy.next = reverseForKGroup(dummy, nextDummy, itr);
-			if (dummyHead.val == -1)
+			if (dummyHead.label == -1)
 			{
 				dummyHead.next = dummy.next;
-				dummyHead.val = 0;
+				dummyHead.label = 0;
 			}
 			dummy = nextDummy;
 		}
@@ -269,7 +270,7 @@ public class LinkedListAlgos
 				if (node == null)
 					continue;
 
-				if (node.val < nextNode.val)
+				if (node.label < nextNode.label)
 				{
 					flag = false;
 					nextNode = node;
@@ -278,10 +279,66 @@ public class LinkedListAlgos
 
 			if (flag)
 				return dummy.next;
-			curr.next = new ListNode(nextNode.val);
+			curr.next = new ListNode(nextNode.label);
 			curr = curr.next;
 			set.add(nextNode);
 		}
+	}
+
+	public ListNode copyRandomList(ListNode head)
+	{
+		if (head == null || head.next == null)
+			return head;
+
+		HashMap<Integer, ListNode> map = new HashMap<>();
+		map.put(null, null);
+		ListNode dummy = new ListNode(0);
+		ListNode curr = dummy;
+
+		while (head != null)
+		{
+			if (map.containsKey(head.label))
+			{
+				curr.next = map.get(head.label);
+				curr = curr.next;
+
+				if (head.next != null && !map.containsKey(head.next.label))
+					map.put(head.next.label, new ListNode(head.next.label));
+
+				if (head.random != null && !map.containsKey(head.random.label))
+					map.put(head.random.label, new ListNode(head.random.label));
+
+				if (head.next != null)
+					curr.next = map.get(head.next.label);
+
+				if (head.random != null)
+					curr.random = map.get(head.random.label);
+			}
+			else
+			{
+				curr.next = new ListNode(head.label);
+				curr = curr.next;
+
+				if (head.next != null && !map.containsKey(head.next.label))
+					map.put(head.next.label, new ListNode(head.next.label));
+
+				if (head.random != null && !map.containsKey(head.random.label))
+					map.put(head.random.label, new ListNode(head.random.label));
+
+				if (head.next != null)
+					curr.next = map.get(head.next.label);
+
+				if (head.random != null)
+					curr.random = map.get(head.random.label);
+
+				map.put(curr.label, curr);
+
+			}
+
+			head = head.next;
+		}
+
+		return dummy.next;
 	}
 
 	public void printList(ListNode head)
@@ -291,7 +348,7 @@ public class LinkedListAlgos
 		System.out.println();
 		while (head != null)
 		{
-			System.out.print(head.val + " ");
+			System.out.print(head.label + " ");
 			head = head.next;
 		}
 		System.out.println();

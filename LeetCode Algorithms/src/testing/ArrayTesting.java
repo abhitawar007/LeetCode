@@ -24,12 +24,20 @@ public class ArrayTesting
 		// _______________________________________________________
 
 		// Flood Fill
-		int[][] image = { { 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 1, 1, 1, 1, 0, 0 },
-				{ 1, 0, 0, 1, 1, 0, 1, 1 }, { 1, 2, 2, 2, 2, 0, 1, 0 }, { 1, 1, 1, 2, 2, 0, 1, 0 },
-				{ 1, 1, 1, 2, 2, 2, 2, 0 }, { 1, 1, 1, 1, 1, 2, 1, 1 },
-				{ 1, 1, 1, 1, 1, 2, 2, 1 }, };
-		ar.floodFill(image, 4, 4, 3);
-		printDoubleArray(image);
+		// int[][] image = { { 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 1, 1, 1, 1, 0, 0 },
+		// { 1, 0, 0, 1, 1, 0, 1, 1 }, { 1, 2, 2, 2, 2, 0, 1, 0 }, { 1, 1, 1, 2, 2, 0,
+		// 1, 0 },
+		// { 1, 1, 1, 2, 2, 2, 2, 0 }, { 1, 1, 1, 1, 1, 2, 1, 1 },
+		// { 1, 1, 1, 1, 1, 2, 2, 1 }, };
+		// ar.floodFill(image, 4, 4, 3);
+		// printDoubleArray(image);
+
+		// _______________________________________________________
+
+		// Count of smaller number after self
+		int[] nums = { 5, 2, 6, 1 };
+		// int[] nums = { 3, 4, 3, 8, 4, 3, 5 };
+		System.out.println(ar.countSmaller(nums));
 	}
 
 	public static void printDoubleArray(int[][] arr)

@@ -1,5 +1,7 @@
 package algorithms;
 
+import java.util.Arrays;
+
 public class DynamicProgramming
 {
 	public int fibonacci(int n)
@@ -93,5 +95,40 @@ public class DynamicProgramming
 		if (arr[n] == 0)
 			arr[n] = cost[n] + Math.min(cost(n - 1, cost, arr), cost(n - 2, cost, arr));
 		return arr[n];
+	}
+
+	public int coinChange(int[] coins, int amount)
+	{
+		if (amount == 0)
+			return 0;
+		if (coins.length == 0)
+			return -1;
+		Arrays.sort(coins);
+		return helper(coins, coins.length - 1, amount);
+	}
+
+	private int helper(int[] coins, int coin, int val)
+	{
+		if (coin < 0)
+			return -1;
+
+		if (val == coins[coin])
+			return 1;
+		int mul = val / coins[coin];
+
+		int ans = (val % coins[coin] == 0) ? mul : Integer.MAX_VALUE;
+
+		while (mul >= 0)
+		{
+			// int passVal = mul == 0 ? val : val - mul
+			int ret = helper(coins, coin - 1, val - mul * coins[coin]);
+			if (ret != -1)
+			{
+				ans = Math.min(ans, mul + ret);
+			}
+			mul--;
+		}
+
+		return ans == Integer.MAX_VALUE ? -1 : ans;
 	}
 }

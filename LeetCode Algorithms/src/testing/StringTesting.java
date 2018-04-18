@@ -22,6 +22,13 @@ public class StringTesting
 		// System.out.println("Generated paranthesis");
 		// System.out.println(arrayNstr.generateParanthesis(3));
 		// _______________________________________________________
+		// License key formatting
+		// String S = "a-b-c-d-e-f";
+		// System.out.println(st.licenseKeyFormatting(S, 4));
+		// _______________________________________________________
+		// Longest palindrome
+		String s = "abac";
+		System.out.println(st.longestPalindrome(s));
 
 	}
 

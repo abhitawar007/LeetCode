@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;val&apos; in &apos;algorithms.ListNode&apos; to &apos;label&apos;&#x0D;&#x0A;- Original project: &apos;LeetCode Algorithms&apos;&#x0D;&#x0A;- Original element: &apos;algorithms.ListNode.val&apos;&#x0D;&#x0A;- Renamed element: &apos;algorithms.ListNode.label&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;val&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;algorithms{ListNode.java[ListNode^val" name="label" references="true" setter="false" stamp="1524012111430" textual="false" version="1.0"/>
+</session>

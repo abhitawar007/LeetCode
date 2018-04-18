@@ -10,7 +10,7 @@ public class BackTrackingTesting
 
 		// __________________________________________________________________
 		// N Queens
-		System.out.println(bk.solveNQueens(4));
+		System.out.println(bk.solveNQueens(8));
 		// __________________________________________________________________
 	}
 }
