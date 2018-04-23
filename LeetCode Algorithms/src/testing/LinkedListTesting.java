@@ -8,8 +8,14 @@ public class LinkedListTesting
 
 	public static void main(String[] args)
 	{
+		// ArrayList sort //
+		// List<ListNode> list = new ArrayList<>();
+		// list.sort((i1, i2) -> Integer.compare(i1.val, i2.val));
+		/////////////////////////
+
 		// Linked list palindrome
 		// Generate Linked list
+
 		ListNode h1 = new ListNode(-1);
 		ListNode c1 = h1;
 

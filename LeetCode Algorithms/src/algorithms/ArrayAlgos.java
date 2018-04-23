@@ -1,11 +1,29 @@
 package algorithms;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 public class ArrayAlgos
 {
+	class MyComparator implements Comparator<Integer>
+	{
+		@Override
+		public int compare(Integer arg0, Integer arg1)
+		{
+			// TODO Auto-generated method stub
+			if (arg0.intValue() < arg1.intValue())
+				return -1;
+			else if (arg0.intValue() > arg1.intValue())
+				return 1;
+			return 0;
+		}
+	}
+
 	public int removeElement(int[] arr, int val)
 	{
 		// 27. Remove Element. Return the new length. Don't care about order and what is
@@ -212,6 +230,160 @@ public class ArrayAlgos
 
 		return list;
 
+	}
+
+	public List<String> topKFrequent(String[] words, int k)
+	{
+		// 692. Top K Frequent Words
+		List<String> list = new ArrayList<>();
+
+		int n = words.length;
+		if (n == 0)
+			return list;
+
+		HashMap<String, Integer> map = new HashMap<>();
+		int max = 0;
+
+		for (String s : words)
+		{
+			if (!map.containsKey(s))
+				map.put(s, 0);
+
+			map.put(s, map.get(s) + 1);
+			max = Math.max(max, map.get(s));
+		}
+
+		System.out.println(map);
+
+		List<List<String>> alist = new ArrayList<List<String>>();
+		for (int i = 0; i <= max + 1; i++)
+			alist.add(i, null);
+
+		for (String s : map.keySet())
+		{
+			int val = map.get(s);
+			System.out.println("val : " + val);
+
+			if (alist.get(val) == null)
+				alist.set(val, new ArrayList<String>());
+
+			alist.get(val).add(s);
+		}
+
+		System.out.println("List _____ " + alist);
+
+		while (k > 0)
+		{
+			for (int i = max; i >= 0; i--)
+			{
+				System.out.println("i : " + i);
+				List<String> al = alist.get(i);
+				if (al == null)
+					continue;
+				Collections.sort(al);
+				for (String s : al)
+				{
+					if (k-- > 0)
+						list.add(s);
+					else
+						return list;
+				}
+			}
+		}
+
+		return list;
+	}
+
+	public int findKthLargest(int[] nums, int k)
+	{
+		int n = nums.length;
+		if (n == 0)
+			return 0;
+
+		PriorityQueue<Integer> q = new PriorityQueue<Integer>(k, new MyComparator());
+
+		for (int i = 0; i < n; i++)
+			q.offer(i);
+
+		int ans = 0;
+		for (int i = 0; i < k; i++)
+			ans = q.poll();
+
+		return ans;
+
+	}
+
+	public int findDuplicate(int[] nums)
+	{
+		// 287. Find the Duplicate Number
+
+		int n = nums.length;
+		if (n == 0)
+			return 0;
+
+		int start = 1, end = n, hi = 0, lo = 0;
+
+		while (start < end)
+		{
+			int mid = start + (end - start) / 2;
+			boolean gotMid = false;
+			lo = 0;
+			hi = 0;
+			for (int i = 0; i < n; i++)
+			{
+				int curr = nums[i];
+				if (curr < mid)
+					lo++;
+				else if (curr > mid)
+					hi++;
+				else if (!gotMid)
+					gotMid = true;
+				else
+					return mid;
+			}
+
+			if (lo >= mid)
+				end = mid;
+			else
+				start = mid;
+		}
+		return start;
+	}
+
+	public void rotate(int[] nums, int k)
+	{
+		// 189. Rotate Array
+
+		int n = nums.length;
+		if (n <= 1)
+			return;
+		reverseArray(nums, 0, k);
+		System.out.println("First reverse");
+		print(nums);
+		reverseArray(nums, k + 1, n - 1);
+		System.out.println("second reverse");
+		print(nums);
+		reverseArray(nums, 0, n - 1);
+	}
+
+	private void reverseArray(int[] nums, int lo, int hi)
+	{
+		int mid = lo + (hi - lo) / 2;
+
+		for (int i = lo; i <= mid; i++)
+		{
+			int temp = nums[i];
+			nums[i] = nums[hi + lo - i];
+			nums[hi + lo - i] = temp;
+		}
+	}
+
+	public void print(int[] nums)
+	{
+		System.out.println();
+		int n = nums.length;
+		for (int i = 0; i < n; i++)
+			System.out.print(nums[i] + " ");
 	}
 
 }

@@ -42,7 +42,7 @@ public class LinkedListAlgos
 			while (len2-- != len1)
 				l2 = l2.next;
 
-		while (l1.label != l2.label)
+		while (l1.val != l2.val)
 		{
 			l1 = l1.next;
 			l2 = l2.next;
@@ -66,7 +66,7 @@ public class LinkedListAlgos
 
 		while (fast != null && fast.next != null)
 		{
-			s.push(slow.label);
+			s.push(slow.val);
 			slow = slow.next;
 			fast = fast.next.next;
 		}
@@ -76,7 +76,7 @@ public class LinkedListAlgos
 
 		while (slow != null)
 		{
-			if (slow.label != s.pop())
+			if (slow.val != s.pop())
 				return false;
 			slow = slow.next;
 		}
@@ -219,10 +219,10 @@ public class LinkedListAlgos
 			// Out of for loop implies that next block is present in the list
 			ListNode nextDummy = dummy.next;
 			dummy.next = reverseForKGroup(dummy, nextDummy, itr);
-			if (dummyHead.label == -1)
+			if (dummyHead.val == -1)
 			{
 				dummyHead.next = dummy.next;
-				dummyHead.label = 0;
+				dummyHead.val = 0;
 			}
 			dummy = nextDummy;
 		}
@@ -270,7 +270,7 @@ public class LinkedListAlgos
 				if (node == null)
 					continue;
 
-				if (node.label < nextNode.label)
+				if (node.val < nextNode.val)
 				{
 					flag = false;
 					nextNode = node;
@@ -279,7 +279,7 @@ public class LinkedListAlgos
 
 			if (flag)
 				return dummy.next;
-			curr.next = new ListNode(nextNode.label);
+			curr.next = new ListNode(nextNode.val);
 			curr = curr.next;
 			set.add(nextNode);
 		}
@@ -297,41 +297,41 @@ public class LinkedListAlgos
 
 		while (head != null)
 		{
-			if (map.containsKey(head.label))
+			if (map.containsKey(head.val))
 			{
-				curr.next = map.get(head.label);
+				curr.next = map.get(head.val);
 				curr = curr.next;
 
-				if (head.next != null && !map.containsKey(head.next.label))
-					map.put(head.next.label, new ListNode(head.next.label));
+				if (head.next != null && !map.containsKey(head.next.val))
+					map.put(head.next.val, new ListNode(head.next.val));
 
-				if (head.random != null && !map.containsKey(head.random.label))
-					map.put(head.random.label, new ListNode(head.random.label));
+				if (head.random != null && !map.containsKey(head.random.val))
+					map.put(head.random.val, new ListNode(head.random.val));
 
 				if (head.next != null)
-					curr.next = map.get(head.next.label);
+					curr.next = map.get(head.next.val);
 
 				if (head.random != null)
-					curr.random = map.get(head.random.label);
+					curr.random = map.get(head.random.val);
 			}
 			else
 			{
-				curr.next = new ListNode(head.label);
+				curr.next = new ListNode(head.val);
 				curr = curr.next;
 
-				if (head.next != null && !map.containsKey(head.next.label))
-					map.put(head.next.label, new ListNode(head.next.label));
+				if (head.next != null && !map.containsKey(head.next.val))
+					map.put(head.next.val, new ListNode(head.next.val));
 
-				if (head.random != null && !map.containsKey(head.random.label))
-					map.put(head.random.label, new ListNode(head.random.label));
+				if (head.random != null && !map.containsKey(head.random.val))
+					map.put(head.random.val, new ListNode(head.random.val));
 
 				if (head.next != null)
-					curr.next = map.get(head.next.label);
+					curr.next = map.get(head.next.val);
 
 				if (head.random != null)
-					curr.random = map.get(head.random.label);
+					curr.random = map.get(head.random.val);
 
-				map.put(curr.label, curr);
+				map.put(curr.val, curr);
 
 			}
 
@@ -348,7 +348,7 @@ public class LinkedListAlgos
 		System.out.println();
 		while (head != null)
 		{
-			System.out.print(head.label + " ");
+			System.out.print(head.val + " ");
 			head = head.next;
 		}
 		System.out.println();

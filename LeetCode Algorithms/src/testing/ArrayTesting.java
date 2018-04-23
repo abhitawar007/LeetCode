@@ -35,9 +35,28 @@ public class ArrayTesting
 		// _______________________________________________________
 
 		// Count of smaller number after self
-		int[] nums = { 5, 2, 6, 1 };
+		// int[] nums = { 5, 2, 6, 1 };
 		// int[] nums = { 3, 4, 3, 8, 4, 3, 5 };
-		System.out.println(ar.countSmaller(nums));
+		// System.out.println(ar.countSmaller(nums));
+
+		// _______________________________________________________
+
+		// Top K frequent numbers
+		// String[] arr = { "i", "love", "leetcode", "i", "love", "coding" };
+		// System.out.println(ar.topKFrequent(arr, 2));
+
+		// _______________________________________________________
+
+		// int[] nums = { 2, 5, 9, 6, 9, 3, 8, 9, 7, 1 };
+		// System.out.println(ar.findDuplicate(nums));
+
+		// _______________________________________________________
+		// Rotate array
+
+		int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
+		ar.rotate(nums, 3);
+		ar.print(nums);
+
 	}
 
 	public static void printDoubleArray(int[][] arr)
