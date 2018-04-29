@@ -1,6 +1,7 @@
 package algorithms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -449,6 +450,93 @@ public class ArrayAlgos
 			lo++;
 			hi--;
 		}
+	}
+
+	int ans, min;
+
+	public int threeSumClosest(int[] nums, int target)
+	{
+		// 16. 3Sum Closest
+
+		int n = nums.length;
+		if (n <= 2)
+			return -1;
+
+		ans = 0;
+		min = Integer.MAX_VALUE;
+		Arrays.sort(nums);
+		for (int i = 0; i < n; i++)
+		{
+			int sum = nums[i];
+			twoSum(nums, i + 1, n - 1, sum, target);
+		}
+
+		return ans;
+	}
+
+	private void twoSum(int[] nums, int lo, int hi, int sum, int target)
+	{
+		while (lo < hi)
+		{
+			int lonum = nums[lo];
+			int hinum = nums[hi];
+			sum += lonum + hinum;
+			if (Math.abs(target - sum) < min)
+			{
+				min = Math.abs(target - sum);
+				ans = sum;
+			}
+			if (sum > target)
+				hi--;
+			else if (sum < target)
+				lo++;
+			else
+				return;
+			sum -= lonum;
+			sum -= hinum;
+		}
+	}
+
+	public int thirdMax(int[] nums)
+	{
+		// 414. Third Maximum Number
+
+		int n = nums.length;
+		if (n == 0)
+			return -1;
+
+		int max = Integer.MIN_VALUE;
+		int smax = Integer.MIN_VALUE;
+		int tmax = Integer.MIN_VALUE;
+		boolean flag = false;
+
+		for (int i = 0; i < n; i++)
+		{
+			if (nums[i] > max)
+			{
+				tmax = smax;
+				smax = max;
+				max = nums[i];
+			}
+			else if (nums[i] > smax && nums[i] != max)
+			{
+				tmax = smax;
+				smax = nums[i];
+			}
+			else if (nums[i] >= tmax && nums[i] != max && nums[i] != smax)
+			{
+				tmax = nums[i];
+			}
+
+			if (nums[i] == Integer.MIN_VALUE)
+				flag = true;
+		}
+
+		if (n <= 2)// || tmax == smax || flag)
+			return max;
+		if (flag && smax == Integer.MIN_VALUE)
+			return max;
+		return tmax;
 	}
 
 }

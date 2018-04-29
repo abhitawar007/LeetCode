@@ -53,9 +53,19 @@ public class ArrayTesting
 		// _______________________________________________________
 		// Rotate array
 
-		int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
-		ar.rotate(nums, 3);
-		ar.print(nums);
+		// int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
+		// ar.rotate(nums, 3);
+		// ar.print(nums);
+		// _______________________________________________________
+
+		// Threesome closest
+		// int[] nums = { 0, 2, 1, -3 };
+		// System.out.println(ar.threeSumClosest(nums, 1));
+		// _______________________________________________________
+
+		// Third largest number
+		int[] nums = { 1, -2147483648, 2 };
+		System.out.println(ar.thirdMax(nums));
 
 	}
 
