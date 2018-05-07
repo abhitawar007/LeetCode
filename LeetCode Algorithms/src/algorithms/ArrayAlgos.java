@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
@@ -537,6 +538,149 @@ public class ArrayAlgos
 		if (flag && smax == Integer.MIN_VALUE)
 			return max;
 		return tmax;
+	}
+
+	public List<Integer> topKFrequent(int[] nums, int k)
+	{
+		// 347. Top K Frequent Elements
+
+		List<Integer> list = new ArrayList<Integer>();
+		int n = nums.length;
+		if (n == 0)
+			return list;
+
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		int max = Integer.MIN_VALUE;
+
+		for (int ele : nums)
+		{
+			map.put(ele, map.getOrDefault(ele, 0) + 1);
+			max = Math.max(max, map.get(ele));
+		}
+
+		List<List<Integer>> store = new ArrayList<List<Integer>>();
+		for (int i = 0; i <= max; i++)
+			store.add(null);
+
+		for (int num : map.keySet())
+		{
+			int val = map.get(num);
+
+			if (store.get(val) == null)
+				store.set(val, new ArrayList<Integer>());
+
+			store.get(val).add(num);
+		}
+
+		int i = store.size() - 1;
+		while (i > 0 && k > 0)
+		{
+			if (store.get(i) == null)
+				continue;
+
+			for (int num : store.get(i))
+			{
+				list.add(num);
+				k--;
+				if (k == 0)
+					return list;
+			}
+			i--;
+		}
+
+		return list;
+	}
+
+	public int findUnsortedSubarray(int[] arr)
+	{
+		// 581. Shortest Unsorted Continuous Subarray
+
+		int n = arr.length;
+
+		if (n == 0 || n == 1)
+			return 0;
+
+		int start = -1, end = -1, startEle = Integer.MIN_VALUE;
+		boolean startEleSet = false;
+
+		for (int i = n - 2; i >= 0; i--)
+		{
+			if (arr[i] > arr[i + 1])
+			{
+				if (startEleSet)
+					startEle = Integer.min(startEle, arr[i + 1]);
+				else
+					startEle = arr[i + 1];
+				startEleSet = true;
+				int k = i + 1, chk = arr[i];
+				while (k < n && arr[k] < chk) // cases like [5,3,4]
+					k++;
+				end = Math.max(end, k - 1);
+			}
+			else if (startEleSet && arr[i] <= startEle)
+			{
+				start = i;
+				startEleSet = false;
+			}
+		}
+		if (startEleSet) // In case first element is higher than second one
+			start = -1;
+
+		return end - start;
+	}
+
+	public boolean checkSubArray(int[] nums, int k)
+	{
+		int n = nums.length;
+		if (n < 2)
+			return false;
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		map.put(0, -1);
+		int currSum = 0;
+
+		// If you have seen currSum % k at previous i, then subarray(i, j] definitely
+		// contains desired sum
+
+		for (int i = 0; i < n; i++)
+		{
+			currSum += nums[i];
+			if (k != 0)
+				currSum %= k;
+
+			if (map.containsKey(currSum))
+			{
+				if (i - map.get(currSum) > 1)
+					return true;
+			}
+			else
+				map.put(currSum, i);
+		}
+
+		return false;
+	}
+
+	public int subArraySum(int[] nums, int k)
+	{
+		int n = nums.length;
+		if (n == 0)
+			return 0;
+
+		int sum = 0, ans = 0;
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+		map.put(0, 1);
+
+		for (int i = 0; i < n; i++)
+		{
+			sum += nums[i];
+
+			if (map.containsKey(sum - k))
+				ans += map.get(sum - k);
+
+			map.put(sum, map.getOrDefault(sum, 0) + 1);
+		}
+
+		return ans;
 	}
 
 }

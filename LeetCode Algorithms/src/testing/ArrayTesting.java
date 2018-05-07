@@ -64,9 +64,25 @@ public class ArrayTesting
 		// _______________________________________________________
 
 		// Third largest number
-		int[] nums = { 1, -2147483648, 2 };
-		System.out.println(ar.thirdMax(nums));
+		// int[] nums = { 1, -2147483648, 2 };
+		// System.out.println(ar.thirdMax(nums));
 
+		// _______________________________________________________
+
+		// Top k frequent elements
+		// int[] nums = { 1, 1, 1, 2, 2, 3 };
+		// System.out.println(ar.topKFrequent(nums, 2));
+		// _______________________________________________________
+
+		// Find shortes unsorted subarray length
+		// int[] nums = { 2, 3, 3, 2, 4 };
+		// System.out.println(ar.findUnsortedSubarray(nums));
+
+		// _______________________________________________________
+
+		// check if subarray sum i multiples of k
+		int[] nums = { 1, 2 };
+		System.out.println(ar.checkSubArray(nums, 3));
 	}
 
 	public static void printDoubleArray(int[][] arr)

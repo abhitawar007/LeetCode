@@ -432,4 +432,32 @@ public class TreeAlgos
 		return node;
 	}
 
+	public int numTrees(int n)
+	{
+		// 96. Unique Binary Search Trees
+
+		if (n <= 1)
+			return n;
+
+		return numTrees(1, n, n);
+	}
+
+	private int numTrees(int lo, int hi, int n)
+	{
+		if (lo < 1 || hi > n || lo > hi)
+			return 1;
+		if (lo == hi)
+			return 1;
+
+		int ans = 0;
+		for (int i = lo; i <= hi; i++)
+		{
+			int leftans = numTrees(lo, i - 1, n);
+			int rightans = numTrees(i + 1, hi, n);
+			ans += Math.max(leftans, rightans);
+		}
+
+		return ans;
+	}
+
 }

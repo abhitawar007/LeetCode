@@ -30,11 +30,11 @@ public class TreeTesting
 
 		// ___________________________________________________
 		// Serialize - Deserialize
-		System.out.println("__________ BEFORE ______________");
-		tree.printTree(dummy);
-		TreeNode ans = tree.deserialize(tree.serialize(dummy));
-		System.out.println("__________ AFTER ______________");
-		tree.printTree(ans);
+		// System.out.println("__________ BEFORE ______________");
+		// tree.printTree(dummy);
+		// TreeNode ans = tree.deserialize(tree.serialize(dummy));
+		// System.out.println("__________ AFTER ______________");
+		// tree.printTree(ans);
 
 		// ___________________________________________________
 
@@ -83,6 +83,11 @@ public class TreeTesting
 		// System.out.print(i + " ");
 		// System.out.println();
 		// }
+
+		// ___________________________________________________
+
+		// Unique Binary Search Trees
+		System.out.println(tree.numTrees(3));
 
 	}
 
