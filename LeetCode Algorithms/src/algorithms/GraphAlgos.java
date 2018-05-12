@@ -1,7 +1,9 @@
 package algorithms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class GraphAlgos
 {
@@ -55,6 +57,51 @@ public class GraphAlgos
 		}
 		return true;
 
+	}
+
+	public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill)
+	{
+		// 582. Kill Process
+
+		List<Integer> list = new ArrayList<Integer>();
+		if (pid.size() == 0)
+			return list;
+
+		HashMap<Integer, GraphNode> map = new HashMap<Integer, GraphNode>();
+
+		// Create graph
+		for (int i = 0; i < pid.size(); i++)
+		{
+			int pidKey = pid.get(i);
+			int ppidKey = ppid.get(i);
+
+			if (!map.containsKey(pidKey))
+				map.put(pidKey, new GraphNode(pidKey));
+			if (!map.containsKey(ppidKey))
+				map.put(ppidKey, new GraphNode(ppidKey));
+
+			map.get(pidKey).parent = map.get(ppidKey); // Set parent
+			map.get(ppidKey).outgoing.add(map.get(pidKey)); // Add child to parent
+		} // Graph is created
+
+		// Check if the kill key really exists
+		if (!map.containsKey(kill))
+			return list;
+
+		// List down all the processes that are going to get killed
+		dfs(map.get(kill), list);
+
+		return list;
+	}
+
+	private void dfs(GraphNode root, List<Integer> list)
+	{
+		if (root == null)
+			return;
+
+		list.add(root.value);
+		for (GraphNode node : root.outgoing)
+			dfs(node, list);
 	}
 
 }

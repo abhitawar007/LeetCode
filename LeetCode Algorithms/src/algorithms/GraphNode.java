@@ -7,6 +7,7 @@ public class GraphNode
 	int value;
 	ArrayList<GraphNode> outgoing;
 	ArrayList<GraphNode> incoming;
+	public GraphNode parent;
 
 	public GraphNode(int val)
 	{
