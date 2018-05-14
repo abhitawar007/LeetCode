@@ -27,8 +27,18 @@ public class StringTesting
 		// System.out.println(st.licenseKeyFormatting(S, 4));
 		// _______________________________________________________
 		// Longest palindrome
-		String s = "abac";
-		System.out.println(st.longestPalindrome(s));
+		// String s = "abac";
+		// System.out.println(st.longestPalindrome(s));
+		// _______________________________________________________
+
+		// Palindrome Permutation
+		// String str = "kayak";
+		// System.out.println(st.canPermutePalindrome(str));
+		// _______________________________________________________
+
+		// Remove 3 or more repeated adjacent characters recursively
+		String str = "dabbbaaaddd";
+		System.out.println(st.removeRecurse(str));
 
 	}
 

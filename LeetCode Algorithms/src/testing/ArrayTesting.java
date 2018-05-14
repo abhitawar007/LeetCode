@@ -81,8 +81,16 @@ public class ArrayTesting
 		// _______________________________________________________
 
 		// check if subarray sum i multiples of k
-		int[] nums = { 1, 2 };
-		System.out.println(ar.checkSubArray(nums, 3));
+		// int[] nums = { 1, 2 };
+		// System.out.println(ar.checkSubArray(nums, 3));
+		// _______________________________________________________
+
+		// Walls and Gates
+		int INF = 100;
+		int[][] grid = { { INF, -1, 0, INF }, { INF, INF, INF, -1 }, { INF, -1, INF, -1 },
+				{ 0, -1, INF, INF } };
+		ar.wallsAndGates(grid);
+		printDoubleArray(grid);
 	}
 
 	public static void printDoubleArray(int[][] arr)

@@ -353,4 +353,5 @@ public class LinkedListAlgos
 		}
 		System.out.println();
 	}
+
 }
