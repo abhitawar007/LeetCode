@@ -104,4 +104,60 @@ public class GraphAlgos
 			dfs(node, list);
 	}
 
+	public boolean checkCycle(int[][] nums)
+	{
+		/*
+		 * ith value of input array represents the elements to which ith element is
+		 * connected e.g. [[1,2], [2]] => 0 is connected to 1 & 2. 1 is connected to 2
+		 * Find if there is a cycle in the graph
+		 */
+
+		int n = nums.length;
+		if (n == 0)
+			return false;
+
+		// Build the graph
+		HashMap<Integer, GraphNode> map = new HashMap<Integer, GraphNode>();
+
+		for (int i = 0; i < n; i++)
+		{
+			if (!map.containsKey(i))
+				map.put(i, new GraphNode(i));
+
+			GraphNode parent = map.get(i);
+
+			for (int j = 0; j < nums[0].length; j++)
+			{
+				if (!map.containsKey(nums[i][j]))
+					map.put(nums[i][j], new GraphNode(nums[i][j]));
+
+				GraphNode child = map.get(nums[i][j]);
+				parent.outgoing.add(child);
+				child.incoming.add(parent);
+			}
+		}
+
+		// Check for the cycle
+		// Consider all the nodes.
+		// Decrement totalNodes every time you find a node with no incoming nodes
+		int totalNodes = map.keySet().size();
+		while (totalNodes > 0)
+		{
+			int prev = totalNodes;
+			for (int key : map.keySet())
+			{
+				GraphNode node = map.get(key);
+				if (node.incoming.size() == 0)
+				{
+					totalNodes--;
+					for (GraphNode child : node.outgoing)
+						child.incoming.remove(node); // Remove self from the incoming of child
+				}
+			}
+			if (prev == totalNodes) // i.e. there is no node with no incoming nodes. i.e. cycle
+				return true;
+		}
+
+		return false;
+	}
 }

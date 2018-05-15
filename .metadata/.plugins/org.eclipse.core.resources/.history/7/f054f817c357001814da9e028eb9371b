@@ -1,0 +1,27 @@
+package testing;
+
+import algorithms.SortingAlgos;
+
+public class SortingTesting
+{
+
+	public static void main(String[] args)
+	{
+		SortingAlgos sort = new SortingAlgos();
+		
+		//______________________________________________________
+		
+		// Insertion sort
+		int[] nums = {5,2,3,1,4};
+		sort.insertionSort(nums);
+		
+	}
+	
+	public static void printArray(int[] nums)
+	{
+		System.out.println();
+		System.out.print(nums[i] + " ");
+		System.out.println();
+	}
+
+}
