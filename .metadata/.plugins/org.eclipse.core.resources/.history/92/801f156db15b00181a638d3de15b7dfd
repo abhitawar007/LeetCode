@@ -125,18 +125,18 @@ public class TreeAlgos
 
 		// Check left subTree
 		int left = checkBalanced(root.left);
-		if (left == Integer.MIN_VALUE) // Check for error
+		if(left == Integer.MIN_VALUE)	// Check for error
 			return Integer.MIN_VALUE;
 
 		// Check right subTree
 		int right = checkBalanced(root.right);
-		if (right == Integer.MIN_VALUE) // Check for error
+		if(right == Integer.MIN_VALUE)	// Check for error
 			return Integer.MIN_VALUE;
 
 		if (Math.abs(left - right) > 1)
-			return Integer.MIN_VALUE; // Create error
+			return Integer.MIN_VALUE;	// Create error
 
-		return Math.max(left, right) + 1; // Return self height
+		return Math.max(left, right) + 1;	// Return self height
 	}
 
 	public boolean isValidBST(TreeNode root)

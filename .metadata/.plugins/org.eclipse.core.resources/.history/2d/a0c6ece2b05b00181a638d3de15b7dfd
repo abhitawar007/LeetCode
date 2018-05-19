@@ -109,34 +109,29 @@ public class TreeAlgos
 	public boolean isBalanced(TreeNode root)
 	{
 		// determine if the tree is height-balanced.
-		if (root == null)
+		if(root == null)
 			return true;
-		if (checkBalanced(root) != Integer.MIN_VALUE)
+		if(checkBalanced(root) != -1)
 			return true;
 		else
 			return false;
 
 	}
-
 	private int checkBalanced(TreeNode root)
 	{
-		if (root == null)
+		if(root == null)
 			return -1;
-
+		
 		// Check left subTree
 		int left = checkBalanced(root.left);
-		if (left == Integer.MIN_VALUE) // Check for error
-			return Integer.MIN_VALUE;
-
+		
 		// Check right subTree
 		int right = checkBalanced(root.right);
-		if (right == Integer.MIN_VALUE) // Check for error
-			return Integer.MIN_VALUE;
-
-		if (Math.abs(left - right) > 1)
-			return Integer.MIN_VALUE; // Create error
-
-		return Math.max(left, right) + 1; // Return self height
+		
+		if(Math.abs(left - right) > 1)
+			return -1;
+		
+		return Math.max(left, right);
 	}
 
 	public boolean isValidBST(TreeNode root)

@@ -37,7 +37,7 @@ public class StringTesting
 		// _______________________________________________________
 
 		// Candy crush
-		String str = "aaacbbb";
+		String str = "dabbbaaaddd";
 		System.out.println(st.candyCrush(str));
 
 	}

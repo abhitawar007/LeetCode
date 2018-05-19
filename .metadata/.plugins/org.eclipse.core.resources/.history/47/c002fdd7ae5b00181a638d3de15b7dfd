@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class StringAlgos
@@ -212,55 +213,43 @@ public class StringAlgos
 
 		StringBuilder sb = new StringBuilder();
 		Stack<Character> store = new Stack<Character>();
+		Stack<Character> eliminator = new Stack<Character>();
 
 		for (int i = 0; i < n; i++)
 		{
 			char ch = str.charAt(i);
 
 			if (!store.isEmpty() && ch != store.peek())
-				// Crush candy
-				crushCandy(store);
+			{
 
-			// Whatever happens, you need to add the candy to the store
-			store.push(ch);
+			}
+			else
+				store.push(ch);
 
 		}
-
-		// For cases like "aaa"
-		crushCandy(store);
-
-		// Generate the sesulting string
-		while (!store.isEmpty())
-			sb.insert(0, store.pop());
 
 		return sb.toString();
 	}
 
-	private void crushCandy(Stack<Character> store)
+	private void fillTemp(Queue<Character> eliminator, Stack<Character> tempStore,
+			Stack<Character> store)
 	{
-		if (store.size() < 3)
+		if (eliminator.size() == 0)
 			return;
 
-		// Take a buffer stack
-		Stack<Character> crusher = new Stack<Character>();
-
-		char curr = store.peek();
-
-		// Add all same candies into the crusher
-		while (!store.isEmpty() && store.peek() == curr)
-			crusher.push(store.pop());
-
-		// Check if number of candies are more than crush limit
-		// If yes, don't worry about crusher, your store is been eliminated of same
-		// candies
-		if (crusher.size() >= 3)
-			return;
+		if (eliminator.size() >= 3)
+		{
+			while (!tempStore.isEmpty())
+				store.push(tempStore.pop());
+			while (!eliminator.isEmpty())
+				eliminator.remove();
+		}
 		else
 		{
-			// Refill the store because number of candies to be crushed are less than
-			// crush-limit
-			while (!crusher.isEmpty())
-				store.push(crusher.pop());
+			while (!eliminator.isEmpty())
+				tempStore.add(eliminator.remove());
 		}
+
 	}
+
 }
