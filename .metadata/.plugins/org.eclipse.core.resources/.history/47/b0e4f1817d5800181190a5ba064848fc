@@ -1,0 +1,135 @@
+package algorithms;
+
+import java.util.HashMap;
+
+class DLLNode
+{
+	int key;
+	int value;
+	DLLNode prev;
+	DLLNode next;
+
+	public DLLNode(int _key, int _val)
+	{
+		key = _key;
+		value = _val;
+	}
+}
+
+
+class DLL
+{
+	DLLNode head;
+
+	public DLL()
+	{
+		head = new DLLNode(-1, -1);
+	}
+
+	public void addNode(DLLNode node)
+	{
+		// Always add new node next to head
+		node.next = head.next;
+		node.prev = head;
+
+		head.next.prev = node;
+		head.next = node;
+	}
+
+	public void removeNode(DLLNode node)
+	{
+		DLLNode prevNode = node.prev;
+		DLLNode nextNode = node.next;
+
+		if (prevNode != null)
+			prevNode.next = nextNode;
+		if (nextNode != null)
+			nextNode.prev = prevNode;
+	}
+
+	public void moveToHead(DLLNode node)
+	{
+		removeNode(node);
+		addNode(node);
+	}
+}
+
+
+public class LRUCache
+{
+	int capacity, count;
+	HashMap<Integer, DLLNode> cache;
+	DLLNode head, tail;
+	DLL dll;
+
+	public LRUCache(int _capacity)
+	{
+		capacity = _capacity;
+		cache = new HashMap<Integer, DLLNode>();
+		dll = new DLL();
+		count = 0;
+
+		// Create head and tail
+		head = new DLLNode(0, 0);
+		tail = new DLLNode(0, 0);
+		head.next = tail;
+		tail.prev = head;
+		head.prev = null;
+		tail.next = null;
+
+	}
+
+	public int get(int key)
+	{
+		/*
+		 * Get the value (will always be positive) of the key if the key exists in the
+		 * cache, otherwise return -1.
+		 */
+
+		DLLNode node = cache.get(key);
+		if (node == null)
+			return -1;
+
+		dll.moveToHead(node);
+		return node.value;
+	}
+
+	public void put(int key, int value)
+	{
+		/*
+		 * Set or insert the value if the key is not already present. When the cache
+		 * reached its capacity, it should invalidate the least recently used item
+		 * before inserting a new item.
+		 */
+
+		DLLNode node = cache.get(key);
+		if (node != null)
+		{
+			// Update the value and move to head
+			node.value = value;
+			dll.moveToHead(node);
+		}
+		else
+		{
+			// Create the new node
+			node = new DLLNode(key, value);
+
+			// Add it in cache as well as in DLL and increment the count
+			dll.addNode(node);
+			cache.put(key, node);
+			count++;
+
+			if (count > capacity)
+			{
+				// trim the tail
+
+				// Remove from cache as well as from DLL and decrement the count
+				cache.remove(tail.prev.key);
+				dll.removeNode(tail.prev);
+				count--;
+			}
+		}
+
+	}
+
+}

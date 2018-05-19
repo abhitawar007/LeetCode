@@ -8,18 +8,27 @@ public class SortingTesting
 	public static void main(String[] args)
 	{
 		SortingAlgos sort = new SortingAlgos();
-
+		int[] nums = { 5, 8, 6, 4, 2, 3, 1, 7 };
+		// int[] nums = { 5, 8, 8, 8, 8, 7, 1, 2, 3, 6, 4, 2, 3, 1, 7 };
+		// int[] nums = { 2, 1 };
+		// int[] nums = { 1 };
+		// int[] nums = {};
 		// ______________________________________________________
 
-		// // Insertion sort
-		// int[] nums = { 5, 8, 6, 4, 2, 3, 1, 7 };
+		// Insertion sort
 		// sort.insertionSort(nums);
 		// printArray(nums);
 		// ______________________________________________________
 
 		// Binary Insertion sort
-		int[] nums = { 5, 8, 6, 4, 2, 3, 1, 7 };
-		sort.binarySort(nums);
+		// sort.binarySort(nums);
+		// ______________________________________________________
+
+		// Merge Sort
+		sort.mergeSort(nums);
+
+		// ______________________________________________________
+		// Print array
 		printArray(nums);
 
 	}

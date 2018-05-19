@@ -86,11 +86,35 @@ public class ArrayTesting
 		// _______________________________________________________
 
 		// Walls and Gates
-		int INF = 100;
-		int[][] grid = { { INF, -1, 0, INF }, { INF, INF, INF, -1 }, { INF, -1, INF, -1 },
-				{ 0, -1, INF, INF } };
-		ar.wallsAndGates(grid);
-		printDoubleArray(grid);
+		// int INF = 100;
+		// int[][] grid = { { INF, -1, 0, INF }, { INF, INF, INF, -1 }, { INF, -1, INF,
+		// -1 },
+		// { 0, -1, INF, INF } };
+		// ar.wallsAndGates(grid);
+		// printDoubleArray(grid);
+		// _______________________________________________________
+
+		// Search for a range
+		// int[] nums = { 5, 7, 7, 8, 8, 8, 10 };
+		// printArray(ar.searchRange(nums, 8));
+		// _______________________________________________________
+
+		// Next greater element
+		// int[] nums = { 4, 5, 2, 7 };
+		// ar.printNextGreaterElement(nums);
+		// _______________________________________________________
+
+		// Trapping rain water
+		int[] nums = { 6, 0, 4, 0, 2 };
+		System.out.println(ar.trap(nums));
+	}
+
+	public static void printArray(int[] nums)
+	{
+		System.out.println();
+		for (int i = 0; i < nums.length; i++)
+			System.out.print(nums[i] + " ");
+		System.out.println();
 	}
 
 	public static void printDoubleArray(int[][] arr)

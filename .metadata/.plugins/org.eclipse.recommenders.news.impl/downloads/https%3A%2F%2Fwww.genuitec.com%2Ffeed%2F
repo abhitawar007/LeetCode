@@ -12,12 +12,31 @@
 	<atom:link href="https://www.genuitec.com/feed/" rel="self" type="application/rss+xml" />
 	<link>https://www.genuitec.com</link>
 	<description>The Cloud Control Company</description>
-	<lastBuildDate>Mon, 14 May 2018 19:06:42 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 17 May 2018 17:49:01 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.2</generator>
 	<item>
+		<title>PHP Development in Eclipse Has Never been Easier!</title>
+		<link>https://www.genuitec.com/php-development-in-eclipse-has-never-been-easier/</link>
+		<pubDate>Thu, 17 May 2018 15:18:14 +0000</pubDate>
+		<dc:creator><![CDATA[Wanda Muriy]]></dc:creator>
+				<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[MyEclipse]]></category>
+		<category><![CDATA[Programming Tips]]></category>
+		<category><![CDATA[Webclipse]]></category>
+		<category><![CDATA[php development]]></category>
+		<category><![CDATA[php development in eclipse]]></category>
+		<category><![CDATA[php extensions pack]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=585242</guid>
+		<description><![CDATA[<p>Great news for you, PHP developer: your coding experience in Eclipse just got better thanks to CodeMix! It’s an Eclipse plugin that gives you access to a whole array of technologies from VS Code and add-on extensions built for Code OSS.How does CodeMix handle PHP support? Directly from Code OSS! There is also extra functionality [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/php-development-in-eclipse-has-never-been-easier/">PHP Development in Eclipse Has Never been Easier!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		</item>
+		<item>
 		<title>CodeMix &#8211; Technical Preview Now Available</title>
 		<link>https://www.genuitec.com/codemix-technical-preview/</link>
 		<pubDate>Tue, 03 Apr 2018 16:49:09 +0000</pubDate>
@@ -284,28 +303,6 @@
 <p>The post <a rel="nofollow" href="https://www.genuitec.com/2017-ci-10-holiday-gift/">2017 CI 10 &#8211; Our Holiday Gift is Here</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
 ]]></description>
 		</item>
-		<item>
-		<title>Create a Note Taking App Using Angular</title>
-		<link>https://www.genuitec.com/create-note-taking-app-using-angular/</link>
-		<pubDate>Mon, 11 Dec 2017 12:51:59 +0000</pubDate>
-		<dc:creator><![CDATA[Bob at Genuitec]]></dc:creator>
-				<category><![CDATA[Eclipse]]></category>
-		<category><![CDATA[Genuitec]]></category>
-		<category><![CDATA[MyEclipse]]></category>
-		<category><![CDATA[Programming Tips]]></category>
-		<category><![CDATA[Webclipse]]></category>
-		<category><![CDATA[create a note taking app]]></category>
-		<category><![CDATA[note taking app]]></category>
-		<category><![CDATA[note taking app with Angular]]></category>
-		<category><![CDATA[write a note taking app]]></category>
-
-		<guid isPermaLink="false">https://www.genuitec.com/?p=542885</guid>
-		<description><![CDATA[<p>In this Angular tutorial, we are going to create a Note Taking App using Angular IDE.Create New Angular ProjectWe’re going to be using Angular IDE in this tutorial, though you can use Webclipse or MyEclipse, following exactly the same steps. Before beginning, do ensure you are in the Angular Perspective (Window &#62; Perspective &#62; Open Perspective [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.genuitec.com/create-note-taking-app-using-angular/">Create a Note Taking App Using Angular</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
-]]></description>
-<enclosure url="https://resources.cloud.genuitec.com/wp-content/uploads/2017/11/note-taking-app-video-1.mp4" length="2433162" type="video/mp4" />
-<enclosure url="https://resources.cloud.genuitec.com/wp-content/uploads/2017/11/note-taking-app-video-2.mp4" length="378943" type="video/mp4" />
-		</item>
 	</channel>
 </rss>
 
@@ -314,7 +311,7 @@ Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/pro
 
 Page Caching using disk: enhanced (SSL caching disabled) 
 Content Delivery Network via resources.cloud.genuitec.com
-Database Caching 139/145 queries in 1.660 seconds using disk
+Database Caching 77/144 queries in 0.778 seconds using disk
 
-Served from: www.genuitec.com @ 2018-05-14 14:48:10 by W3 Total Cache
+Served from: www.genuitec.com @ 2018-05-17 13:58:19 by W3 Total Cache
 -->

@@ -68,4 +68,48 @@ public class SortingAlgos
 		return lo;
 	}
 
+	public void mergeSort(int[] nums)
+	{
+		// Divide into small arrays and merge two sorted arrays
+		mergeSort(nums, 0, nums.length - 1);
+	}
+
+	private void mergeSort(int[] nums, int lo, int hi)
+	{
+		if (lo >= hi)
+			return;
+		int mid = lo + (hi - lo) / 2;
+		mergeSort(nums, lo, mid);
+		mergeSort(nums, mid + 1, hi);
+
+		merge(nums, lo, mid, hi);
+	}
+
+	private void merge(int[] nums, int lo, int mid, int hi)
+	{
+		int leftLength = mid - lo + 1;
+		int rightLength = hi - mid;
+
+		int[] leftArr = new int[leftLength];
+		int[] rightArr = new int[rightLength];
+
+		for (int i = 0; i < leftLength; i++)
+			leftArr[i] = nums[lo + i];
+		for (int i = 0; i < rightLength; i++)
+			rightArr[i] = nums[mid + 1 + i];
+
+		int i = 0, j = 0;
+		while (i < leftLength || j < rightLength)
+		{
+			if (i >= leftLength)
+				nums[lo++] = rightArr[j++];
+			else if (j >= rightLength)
+				nums[lo++] = leftArr[i++];
+			else if (leftArr[i] <= rightArr[j])
+				nums[lo++] = leftArr[i++];
+			else
+				nums[lo++] = rightArr[j++];
+		}
+	}
+
 }

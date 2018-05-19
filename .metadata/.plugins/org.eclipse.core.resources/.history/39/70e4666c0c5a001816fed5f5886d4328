@@ -1,0 +1,42 @@
+package testing;
+
+import algorithms.SortingAlgos;
+
+public class SortingTesting
+{
+
+	public static void main(String[] args)
+	{
+		SortingAlgos sort = new SortingAlgos();
+		// int[] nums = { 5, 8, 6, 4, 2, 3, 1, 7 };
+		// int[] nums = { 5, 8, 8, 8, 8, 7, 1, 2, 3, 6, 4, 2, 3, 1, 7 };
+		int[] nums = { 2, 1 };
+		// ______________________________________________________
+
+		// Insertion sort
+		// sort.insertionSort(nums);
+		// printArray(nums);
+		// ______________________________________________________
+
+		// Binary Insertion sort
+		// sort.binarySort(nums);
+		// ______________________________________________________
+
+		// Merge Sort
+		sort.mergeSort(nums);
+
+		// ______________________________________________________
+		// Print array
+		printArray(nums);
+
+	}
+
+	public static void printArray(int[] nums)
+	{
+		System.out.println();
+		for (int i = 0; i < nums.length; i++)
+			System.out.print(nums[i] + " ");
+		System.out.println();
+	}
+
+}

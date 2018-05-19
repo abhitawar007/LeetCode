@@ -1,20 +1,75 @@
 package algorithms;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
+class DLLNode
+{
+	int key;
+	int value;
+	DLLNode prev;
+	DLLNode next;
+
+	public DLLNode(int _key, int _val)
+	{
+		key = _key;
+		value = _val;
+	}
+}
+
 
 public class LRUCache
 {
-	int capacity;
-	List<Integer> cache;
-	HashMap<Integer, Integer> map;
+	DLLNode head, tail;
+
+	public void addNode(DLLNode node)
+	{
+		// Always add new node next to head
+		node.next = head.next;
+		node.prev = head;
+
+		head.next.prev = node;
+		head.next = node;
+	}
+
+	public void removeNode(DLLNode node)
+	{
+		DLLNode prevNode = node.prev;
+		DLLNode nextNode = node.next;
+
+		if (prevNode != null)
+			prevNode.next = nextNode;
+		if (nextNode != null)
+			nextNode.prev = prevNode;
+	}
+
+	public void moveToHead(DLLNode node)
+	{
+		removeNode(node);
+		addNode(node);
+	}
+
+	public void trimTail()
+	{
+		removeNode(tail.prev);
+	}
+
+	int capacity, count;
+	HashMap<Integer, DLLNode> cache;
 
 	public LRUCache(int _capacity)
 	{
 		capacity = _capacity;
-		cache = new ArrayList<Integer>();
-		map = new HashMap<Integer, Integer>();
+		cache = new HashMap<Integer, DLLNode>();
+		count = 0;
+
+		// Create head and tail
+		head = new DLLNode(0, 0);
+		tail = new DLLNode(0, 0);
+		head.next = tail;
+		tail.prev = head;
+		head.prev = null;
+		tail.next = null;
+
 	}
 
 	public int get(int key)
@@ -23,13 +78,13 @@ public class LRUCache
 		 * Get the value (will always be positive) of the key if the key exists in the
 		 * cache, otherwise return -1.
 		 */
-		int ret = -1;
-		if (cache.contains(key))
-		{
-			ret = map.get(key);
-			updateCache(key);
-		}
-		return ret;
+
+		DLLNode node = cache.get(key);
+		if (node == null)
+			return -1;
+
+		moveToHead(node);
+		return node.value;
 	}
 
 	public void put(int key, int value)
@@ -40,45 +95,34 @@ public class LRUCache
 		 * before inserting a new item.
 		 */
 
-		if (!cache.contains(key))
+		DLLNode node = cache.get(key);
+		if (node != null)
 		{
-			if (cache.size() == capacity)
-				trim();
+			// Update the value and move to head
+			node.value = value;
+			moveToHead(node);
 		}
-		map.put(key, value);
-		updateCache(key);
-	}
-
-	private void updateCache(int key)
-	{
-		/*
-		 * Make the key as most recently used element
-		 */
-
-		if (!cache.contains(key))
-			cache.add(key);
-
-		if (cache.get(0) == key)
-			return;
-
-		int i = 1, prev = cache.get(0), curr = 0;
-		while (cache.get(i) != key)
+		else
 		{
-			curr = cache.get(i);
-			cache.set(i, prev);
-			prev = curr;
-			i++;
+			// Create the new node
+			node = new DLLNode(key, value);
+
+			// Add it in cache as well as in DLL and increment the count
+			addNode(node);
+			cache.put(key, node);
+			count++;
+
+			if (count > capacity)
+			{
+				// trim the tail
+
+				// Remove from cache as well as from DLL and decrement the count
+				cache.remove(tail.prev.key);
+				trimTail();
+				count--;
+			}
 		}
-		cache.set(i, prev);
-		cache.set(0, key);
+
 	}
 
-	private void trim()
-	{
-		/*
-		 * Remove the least recently used key from cache
-		 */
-		map.remove(cache.get(cache.size() - 1));
-		cache.remove(cache.size() - 1);
-	}
 }

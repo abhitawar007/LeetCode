@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
 
 public class ArrayAlgos
@@ -724,5 +726,158 @@ public class ArrayAlgos
 		wallsAndGatesDFS(grid, row + 1, col, val + 1);
 		wallsAndGatesDFS(grid, row, col - 1, val + 1);
 		wallsAndGatesDFS(grid, row, col + 1, val + 1);
+	}
+
+	public int[] searchRange(int[] nums, int target)
+	{
+		// 34. Search for a range
+
+		int[] ans = new int[2];
+		ans[0] = -1;
+		ans[1] = -1;
+
+		int n = nums.length;
+		if (n == 0)
+			return ans;
+
+		int lo = 0, hi = n - 1;
+		int mid = 0;
+
+		while (lo <= hi)
+		{
+			mid = lo + (hi - lo) / 2;
+
+			if (nums[mid] == target)
+			{
+				ans[0] = findStart(nums, lo, mid, target);
+				ans[1] = findEnd(nums, mid, hi, target);
+				return ans;
+			}
+			else if (nums[mid] < target)
+				lo = mid + 1;
+			else
+				hi = mid - 1;
+		}
+
+		return ans;
+	}
+
+	private int findStart(int[] nums, int lo, int hi, int target)
+	{
+		while (lo < hi)
+		{
+			int mid = lo + (hi - lo) / 2;
+			if (nums[mid] < target)
+				lo = mid + 1;
+			else if (nums[mid] > target)
+				hi = mid - 1;
+			else if (mid == lo && nums[mid] == target
+					|| nums[mid] == target && nums[mid - 1] < target)
+				return mid;
+			else
+				hi = mid - 1;
+		}
+		return hi;
+	}
+
+	private int findEnd(int[] nums, int lo, int hi, int target)
+	{
+		while (lo < hi)
+		{
+			int mid = lo + (hi - lo) / 2;
+			if (nums[mid] < target)
+				lo = mid + 1;
+			else if (nums[mid] > target)
+				hi = mid - 1;
+			else if (mid == hi && nums[mid] == target
+					|| nums[mid] == target && nums[mid + 1] > target)
+				return mid;
+			else
+				lo = mid + 1;
+		}
+		return lo;
+	}
+
+	public void printNextGreaterElement(int[] nums)
+	{
+		/*
+		 * Given an array, print the Next Greater Element (NGE) for every element. The
+		 * Next greater Element for an element x is the first greater element on the
+		 * right side of x in array. Elements for which no greater element exist,
+		 * consider next greater element as -1 O(n2) is very easy. Trying O(n)
+		 */
+		int n = nums.length;
+		if (n == 0)
+			return;
+
+		Queue<Integer> q = new LinkedList<Integer>();
+
+		for (int i = 0; i < n; i++)
+		{
+			int curr = nums[i];
+
+			/*
+			 * There are two cases. 1. if curr is smaller than s.top, then just add it to
+			 * the queue. 2. if curr > s.top, then print s.top -> curr
+			 */
+			while (!q.isEmpty() && curr > q.peek())
+				System.out.println(q.remove() + " -> " + curr);
+
+			// Add curr element on the stack
+			q.add(curr);
+		}
+
+		// All the elements remaining in the Queue don't have next greater element.
+		// So print -1 for all of them
+
+		while (!q.isEmpty())
+			System.out.println(q.remove() + " -> " + -1);
+
+	}
+
+	public int trap(int[] nums)
+	{
+		// 42. Trapping Rain Water
+
+		/*
+		 * Logic : Take two pointers. One at start and one at end.
+		 * 
+		 * (1) If bar on left pointer is smaller than bar on right pointer, consider
+		 * this one as water cannot be more than smaller height
+		 * 
+		 * (2) If this bar is higher than respective max height, then modify maxHeight
+		 * 
+		 * (3) If this bar is shorter than respective max height, then it is going to be
+		 * immersed in water. In that case, subtract the height of this bar from
+		 * maxHeight and add total to totalWater. This step also takes care of the fact
+		 * that there needs to be at least one short bar in between two higher bars for
+		 * the water to be filled
+		 */
+
+		int left = 0, right = nums.length - 1;
+		int maxLeft = 0, maxRight = 0;
+		int totalWater = 0;
+
+		while (left <= right)
+		{
+			if (nums[left] <= nums[right]) // (1)
+			{
+				if (nums[left] >= maxLeft) // (2)
+					maxLeft = nums[left];
+				else
+					totalWater += maxLeft - nums[left]; // (3)
+				left++;
+			}
+			else
+			{
+				if (nums[right] >= maxRight)
+					maxRight = nums[right];
+				else
+					totalWater += maxRight - nums[right];
+				right--;
+			}
+		}
+		return totalWater;
+
 	}
 }
